@@ -1,12 +1,13 @@
 language: node_js
 node_js:
   - "8"
-
+install:
+  - yarn
 services:
   - postgresql
 
 script:
-  - yarn test --c
+  - yarn test
   
 after_success:
-  - yarn coverage
+  -
