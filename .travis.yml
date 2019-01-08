@@ -7,7 +7,6 @@ services:
   - postgresql
 
 before_script:
-  - yarn add -g sequelize
   - yarn add -g jest
 
 script:
