@@ -2,8 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: circleci/node:8.10.0
     steps:
       - checkout
-      - run: yarn 
+      - run: yarn add
       - run: yarn test
