@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon --exec babel-node app.js",
-    "test": "jest --coverage",
+    "test": "jest",
     "lint": "eslint src && eslint __tests__"
   },
   "jest": {
