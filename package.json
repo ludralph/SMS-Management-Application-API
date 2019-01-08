@@ -10,9 +10,6 @@
     "test": "jest",
     "lint": "eslint src && eslint __tests__"
   },
-  "jest": {
-    "testEnvironment": "node"
-  },
   "devDependencies": {
     "eslint": "^5.12.0",
     "eslint-config-airbnb-base": "^13.1.0",
