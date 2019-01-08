@@ -1,0 +1,19 @@
+{
+  "name": "sms_management_aplication_api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ludralph/SMS-Management-Application-API.git",
+  "author": "ludralph <raphaelumoh@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon --exec babel-node app.js",
+    "test": "jest",
+    "lint": "eslint src && eslint __tests__"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "jest": "^23.6.0"
+  }
+}
