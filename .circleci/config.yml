@@ -6,6 +6,7 @@ jobs:
     steps:
       - checkout
       - run: npm install
+      - run: npm install nyc
       - run: npm test
       - run:
           name: Generate code coverage
