@@ -6,7 +6,7 @@
   "author": "ludralph <raphaelumoh@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --exec babel-node app.js",
+    "start": "nodemon src/server.js",
     "test": "jest",
     "lint": "eslint src && eslint __tests__"
   },
@@ -15,5 +15,10 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "jest": "^23.6.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "logger": "^0.0.1"
   }
 }
