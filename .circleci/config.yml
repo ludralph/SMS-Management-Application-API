@@ -6,14 +6,4 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npm install nyc
       - run: npm test
-      - run:
-          name: Generate code coverage
-          command: |
-            node_modules/.bin/nyc report --reporter=text-lcov
-      - store_artifacts:
-          path: test-results.xml
-      - store_artifacts:
-          path: coverage
-          
