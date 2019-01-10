@@ -7,8 +7,10 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon src/server.js",
-    "test": "jest",
-    "lint": "eslint src && eslint __tests__"
+    "test": "jest --coverage",
+    "lint": "eslint src && eslint __tests__",
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test | coveralls",
+    "coverage": "nyc  --reporter=text-lcov | coveralls"
   },
   "devDependencies": {
     "eslint": "^5.12.0",
@@ -18,7 +20,10 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "coveralls": "^3.0.2",
     "express": "^4.16.4",
-    "logger": "^0.0.1"
+    "logger": "^0.0.1",
+    "nyc": "^13.1.0",
+    "supertest": "^3.3.0"
   }
 }
