@@ -925,6 +925,10 @@ domexception@^1.0.1:
   dependencies:
     webidl-conversions "^4.0.2"
 
+dotenv@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.npmjs.org/dotenv/-/dotenv-6.2.0.tgz#941c0410535d942c8becf28d3f357dbd9d476064"
+
 dottie@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/dottie/-/dottie-2.0.1.tgz#697ad9d72004db7574d21f892466a3c285893659"
