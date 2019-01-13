@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon src/server.js",
-    "test": "jest --coverage",
+    "test": "jest --coverage --detectOpenHandles",
     "lint": "eslint src && eslint __tests__",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test | coveralls",
     "coverage": "nyc  --reporter=text-lcov | coveralls"
