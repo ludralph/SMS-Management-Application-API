@@ -1,11 +1,32 @@
 const db = require('../../models');
-
+console.lo
 const retrieveAllContacts = async (req, res) => {
   try {
     const allContacts = await db.Contact.findAll();
     res.status(200).json({ status: 'success', message: 'View All Contacts', data: allContacts });
   } catch (err) {
     res.status(400).json({ status: 'error', message: err.message });
+  }
+};
+
+const listContactMessages = async (req, res) => {
+  try {
+    const { contactId } = req.params;
+
+    const doesContactExist = await db.Contact.findByPk(contactId);
+    if (!doesContactExist) {
+      return res.status(404).json({ status: 'error', message: 'This contact does not exist' });
+    }
+    const getContactMessages = await db.Contact.findOne({
+      include: {
+        model: db.Sms,
+        as: 'Messages',
+        attributes: ['recipientId', 'message', 'status'],
+      },
+    });
+    res.status(200).json({ status: 'success', message: 'Contact updated successfully', data: getContactMessages });
+  } catch (error) {
+    res.status(400).json({ status: 'error', message: error.message });
   }
 };
 
@@ -87,4 +108,5 @@ module.exports = {
   createNewContact,
   updateExistingContact,
   removeContact,
+  listContactMessages,
 };
