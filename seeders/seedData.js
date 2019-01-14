@@ -15,8 +15,8 @@ const contacts = [
   },
 ];
 
-const insertSeedData = () => {
-  db.Contact.bulkCreate(contacts);
+const insertSeedData = async () => {
+  await db.Contact.bulkCreate(contacts);
 };
 
 module.exports = {

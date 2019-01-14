@@ -10,7 +10,6 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys:
           key: 'dependency-cache-{{ checksum "yarn.lock" }}'
       - run:
           name: Install Packages

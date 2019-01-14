@@ -4,17 +4,15 @@ const request = require('supertest');
 // we also need our app for the correct routes!
 const app = require('../../src/app');
 const insertSeedData = require('../../seeders/seedData');
-const db = require('../../models')
-
-console.log('>>>', process.env.NODE_ENV);
+const db = require('../../models');
 
 describe('To do before running test', () => {
-  beforeEach((done) => {
+  beforeAll((done) => {
     db.sequelize.sync({ force: true })
-    .then(() => {
-      insertSeedData();
-      done();
-    });
+      .then(() => {
+        insertSeedData();
+        done();
+      });
   });
 });
 
