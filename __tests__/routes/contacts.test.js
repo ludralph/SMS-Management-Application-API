@@ -8,7 +8,7 @@ console.log('>>>', process.env.NODE_ENV)
 describe('GET /contacts', async () => {
   test('It responds with an array of contacts', async (done) => {
     const response = await request(app).get('/api/v1/contacts');
-    console.log('>>>>', response.body.data)
+    console.log('>>>>', response.body)
     expect(response.body.data.length).toBe(1);
     expect(response.statusCode).toBe(200);
     done();
