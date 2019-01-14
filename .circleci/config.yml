@@ -25,9 +25,7 @@ jobs:
             - ./node_modules
       - run:
           name: Database Setup
-          command: |
-              npm install sequelize
-              ./node_modules/sequelize db:migrate --env test
+          command: './node_modules/sequelize db:migrate --env test'
       - run: npm test
       - run:
           name: code-coverage
