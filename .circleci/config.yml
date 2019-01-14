@@ -3,17 +3,32 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.10.0
+        environment:
+          NODE_ENV: test
+      - image: circleci/postgres:9.6-alpine
+    working_directory: ~/repo
     steps:
       - checkout
-      - restore_cache: # special step to restore the dependency cache
-          # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
-          key: dependency-cache-{{ checksum "package.json" }}
+      - restore_cache:
+          key: 'dependency-cache-{{ checksum "yarn.lock" }}'
       - run:
-          name: install-npm-wee
+          name: Install Packages
           command: npm install
-      - save_cache: # special step to save the dependency cache
-          key: dependency-cache-{{ checksum "package.json" }}
+      - save_cache:
+          key: 'dependency-cache-{{ checksum "yarn.lock" }}'
           paths:
             - ./node_modules
-      - run: npm test
-
+      - run:
+          name: Database Setup
+          command: npm run db:reset && npm run db:migrate
+      - run:
+          name: Run Tests
+          command: npm test --coverage         
+      - run:
+          name: Run Coverage
+          command: |
+            ./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/coveralls/bin/coveralls.js
+      - store_test_results:
+          path: reports
+      - store_artifacts:
+          path: ./reports/mocha/test-results.xml
