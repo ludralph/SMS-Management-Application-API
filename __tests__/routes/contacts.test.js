@@ -1,13 +1,27 @@
 /* eslint-disable no-undef */
 // we will use supertest to test HTTP requests/responses
-const request = require("supertest");
+const request = require('supertest');
 // we also need our app for the correct routes!
 const app = require('../../src/app');
+const insertSeedData = require('../../seeders/seedData');
+const db = require('../../models');
 
-describe('GET /contacts', () => {
-  test('It responds with an array of contacts', async () => {
+describe('To do before running test', () => {
+  beforeEach((done) => {
+    db.sequelize.sync({ force: true })
+      .then(() => {
+        insertSeedData();
+        done();
+      });
+  });
+});
+
+describe('GET /contacts', async () => {
+  test('It responds with an array of contacts', async (done) => {
     const response = await request(app).get('/api/v1/contacts');
-    expect(response.body.data.length).toBe(1);
+    console.log('>>>>', response.body);
+    expect(response.body.data.length).toBe(0);
     expect(response.statusCode).toBe(200);
+    done();
   });
 });
