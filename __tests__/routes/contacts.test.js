@@ -3,13 +3,26 @@
 const request = require('supertest');
 // we also need our app for the correct routes!
 const app = require('../../src/app');
-console.log('>>>', process.env.NODE_ENV)
+const insertSeedData = require('../../seeders/seedData');
+const db = require('../../models')
+
+console.log('>>>', process.env.NODE_ENV);
+
+describe('To do before running test', () => {
+  beforeEach((done) => {
+    db.sequelize.sync({ force: true })
+    .then(() => {
+      insertSeedData();
+      done();
+    });
+  });
+});
 
 describe('GET /contacts', async () => {
   test('It responds with an array of contacts', async (done) => {
     const response = await request(app).get('/api/v1/contacts');
-    console.log('>>>>', response.body)
-    expect(response.body.data.length).toBe(1);
+    console.log('>>>>', response.body);
+    expect(response.body.data.length).toBe(3);
     expect(response.statusCode).toBe(200);
     done();
   });
