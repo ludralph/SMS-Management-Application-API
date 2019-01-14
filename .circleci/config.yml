@@ -3,6 +3,14 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.10.0
+        environment:
+          NODE_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+      - image: circleci/postgres:9.6.2-alpine
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: sms_management_api
     steps:
       - checkout
       - restore_cache: # special step to restore the dependency cache
@@ -11,6 +19,11 @@ jobs:
       - run:
           name: install-npm-wee
           command: npm install
+      - run:
+          name: Database Setup
+          command: |
+              npm install -g sequelize
+              sequelize db:migrate --env test
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
