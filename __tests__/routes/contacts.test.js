@@ -7,7 +7,7 @@ const insertSeedData = require('../../seeders/seedData');
 const db = require('../../models');
 
 describe('To do before running test', () => {
-  beforeAll((done) => {
+  beforeEach((done) => {
     db.sequelize.sync({ force: true })
       .then(() => {
         insertSeedData();
@@ -20,7 +20,7 @@ describe('GET /contacts', async () => {
   test('It responds with an array of contacts', async (done) => {
     const response = await request(app).get('/api/v1/contacts');
     console.log('>>>>', response.body);
-    expect(response.body.data.length).toBe(3);
+    expect(response.body.data.length).toBe(0);
     expect(response.statusCode).toBe(200);
     done();
   });
