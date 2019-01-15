@@ -7,6 +7,7 @@
 ## Available Endpoints
 The documentation for the SMS Management API can be found here [SMS API ](https://documenter.getpostman.com/view/2052029/RznJnH7X#18699487-2b58-46e0-8bcf-453ee30aba59)
 
+
 ## Dependencies
 
 To install the SMS Management API, you will need the following:

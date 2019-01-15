@@ -24,6 +24,7 @@ const listContactMessages = async (req, res) => {
         attributes: ['recipientId', 'message', 'status'],
       },
     });
+    console.log('>>>>', getContactMessages)
     res.status(200).json({ status: 'success', message: 'Contact updated successfully', data: getContactMessages });
   } catch (error) {
     res.status(400).json({ status: 'error', message: error.message });
