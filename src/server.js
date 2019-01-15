@@ -1,6 +1,6 @@
 const logger = require('logger').createLogger();
 const app = require('./app');
-const db = require('../models')
+const db = require('../models');
 
 
 const PORT = process.env.PORT || 3001;
