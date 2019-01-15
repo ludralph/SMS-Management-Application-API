@@ -12,7 +12,7 @@ const db = {};
 
 let sequelize;
 if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+  sequelize = new Sequelize(config.use_env_variable, { logging: false });
 } else {
   sequelize = new Sequelize(config.url);
 }
