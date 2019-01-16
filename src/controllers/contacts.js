@@ -1,5 +1,5 @@
 const db = require('../../models');
-console.lo
+
 const retrieveAllContacts = async (req, res) => {
   try {
     const allContacts = await db.Contact.findAll();
